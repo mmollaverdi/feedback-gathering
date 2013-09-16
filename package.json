@@ -1,0 +1,15 @@
+{
+  "name": "Feedback",
+  "version": "0.0.1",
+  "description": "Feedback for performance reviews",
+  "keywords":["feedback"],
+  "author": {
+    "name": "Mehdi Mollaverdi",
+    "email": "m.mollaverdi@gmail.com"
+  },
+  "dependencies": {
+    "socket.io": "0.9"
+  },
+  "main" : "./index",
+  "engine": "node >= 0.10"
+}

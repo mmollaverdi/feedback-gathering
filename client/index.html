@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="utf-8">
+    <title>Feedback</title>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.js"></script>
+    <script src="js/angular-socket-io.js"></script>
+    <script src="js/lvl-uuid.js"></script>
+    <script src="js/lvl-drag-drop.js"></script>
+    <script src="js/underscore.js"></script>
+    <script src="js/app.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css"/>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/app.css"/>
+</head>
+<body ng-app="feedbackApp">
+
+    <div class="container-fluid" ng-controller="VotingController">
+        <div class="span12">
+            <h1>Vote</h1>
+        </div>
+
+        <div class="span8">
+            <div class="row-fluid"><h2>Item to Vote</h2></div>
+			<!--<ul class="list-group">
+                <li ng-repeat="voteItem in voteItems" class="list-group-item">-->
+            <ul class="unstyled">
+                <li ng-repeat="voteItem in voteItems">
+                    <div class="row-fluid">
+                        <div class='span12'>
+                            <span><strong>{{voteItem.title}}</strong></span>
+                        </div>
+                        <div class="span12" x-lvl-draggable="true" x-lvl-drop-target="true" x-on-drop="dropped(dragEl, voteItem.code)">
+                            <input type="hidden" data-vote-item="{{voteItem.title}}" />
+                            <br />
+                        </div>
+                        <div class='span3' ng-repeat="(person, voteCount) in voteItem.votes">
+                            <img ng-src="avatars/{{person}}.jpg" ng-title="{{person}}" height="90" width="90"/>
+                            <a href="#" ng-click="voted(person, voteItem.code)">+{{voteCount}}</a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="span4">
+            <div class="row-fluid"><h2>Team Members</h2></div>
+			<div class="row-fluid" id="people">
+                <div class='span4' ng-repeat="person in people">
+                    <div x-lvl-draggable="true" data-person-name="{{person}}">
+                        <img ng-src="avatars/{{person}}.jpg" />
+                        <span><strong>{{person}}</strong></span>
+                    </div>
+                </div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
